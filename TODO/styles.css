@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: wheat;
+    margin: none;
+    padding: none;
+}
+
+#tasks{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    transform: translateX(-5vw);
+}
+
+.task-container{
+    display: flex;
+    padding-top: 2vh;
+    gap: 2vw;
+    flex-basis: 100;
+}
+
+.task-container *{
+    flex-basis: 100%;
+}
+
+.delete{
+    align-self: flex-end;
+}
