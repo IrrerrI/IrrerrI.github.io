@@ -6,11 +6,10 @@ const taskInput = document.querySelector('#task-input')
 
 deleteTask =(e) => {
     const parentDiv = e.target.closest('.task-container')
-    parentDiv.innerHTML = null
+    parentDiv.remove()
 }
 
 const addTask = () => {
-    taskInput.clear
     taskContainer = document.createElement('li')
     taskContainer.classList.add('task-container')
     const checkBox = document.createElement("input");
