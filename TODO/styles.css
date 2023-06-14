@@ -25,13 +25,15 @@ body{
     display: flex;
     padding-top: 2vh;
     gap: 2vw;
-    flex-basis: 100;
-}
-
-.task-container *{
     flex-basis: 100%;
 }
 
+
+
 .delete{
     align-self: flex-end;
+}
+
+.check{
+    max-width: 1px;
 }
