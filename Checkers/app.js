@@ -1,6 +1,9 @@
 const gameBoard = document.querySelector('.game-board')
 const piece = ('<div class="piece"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/></svg></div>')
 
+
+
+
 const piecesOrigin = [
     piece,'',piece,'',piece,'',piece,'',
     '',piece,'',piece,'',piece,'',piece,
@@ -12,7 +15,17 @@ const piecesOrigin = [
     piece,'',piece,'',piece,'',piece,''
 ]
 const rowNumber = piecesOrigin.length / 8;
+let isRedTurn = true
 
+
+
+
+
+
+
+
+//isRedTurn = piecesRed.classList.add('draggable')
+//if (isRedTurn = fales) {piecesBlue.classList.add('draggable')}
 
 const createGame =() => {
     piecesOrigin.forEach((pieceOrigin, i)=> {
@@ -23,10 +36,8 @@ const createGame =() => {
        gameBoard.appendChild(square);
        if ((i % 2 === 0) ^ (i / rowNumber) % 2) {
         square.classList.add('red');
-    }
+    }})};
 
-    });
-}
 
 
 
