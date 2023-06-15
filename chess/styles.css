@@ -47,10 +47,16 @@ body{
 
 .whitepiece{
     fill: currentColor;
-    color: white;
+    color: rgb(255, 192, 192);
 }
 
 .blackpiece{
     fill: currentColor;
     color: black;
+}
+
+
+
+[draggable="true"]{
+    cursor: pointer;
 }

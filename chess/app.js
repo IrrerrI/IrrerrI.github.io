@@ -20,7 +20,7 @@ const piecesOrigin = [
 ]
 
 const rowNumber = piecesOrigin.length / 8;
-
+let isWhiteTurn = true
 
 const createGame =() => {
     piecesOrigin.forEach((pieceOrigin, i)=> {
@@ -56,14 +56,27 @@ chessPieces.forEach(chessPiece =>{
 const blackPieces = Array.from(chessPieces).splice(0, 16)
 const whitePieces = Array.from(chessPieces).splice(16, 31)
 
-console.log(whitePieces)
-
 blackPieces.forEach(blackPiece =>
-    blackPiece.firstChild.classList.add('.blackpiece'))
+blackPiece.firstChild.classList.add('blackpiece'))
 whitePieces.forEach(whitePiece =>
-whitePiece.firstChild.classList.add('.whitepiece'))
+whitePiece.firstChild.classList.add('whitepiece'))
 
-
+if (isWhiteTurn = true) {
+    whitePieces.forEach(whitePiece => {
+      whitePiece.draggable = true;
+    });
+    blackPieces.forEach(blackPiece => {
+        blackPiece.draggable = false;
+    });
+  } 
+  else {
+    whitePieces.forEach(whitePiece => {
+      whitePiece.draggable = false;
+    });
+    blackPieces.forEach(blackPiece => {
+        blackPiece.draggable = true;
+    });
+  }
 
 
 
