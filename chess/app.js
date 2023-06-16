@@ -47,32 +47,13 @@ const createGame =() => {
 createGame();
 
 ///////////////////////////////////////////logic////////////////////////////////////////////////////
-let validMove
 let draggedPiece
 let dropLocation
-
-if (draggedPiece === 'pawn' && draggedPiece.classList.contains('white-piece') && dropPosition === parseInt(draggedPiece.parentNode.getAttribute('square-id')) - 8) {
-    validMove = true;
-  } else {
-    validMove = false;
-  }
-
-const commitMove = (e) => {
-    if (
-        dropLocation.classList.contains('square')
-        )
-        {
-dropLocation.appendChild(draggedPiece)
-    }
-    dropLocation.parentNode.innerHTML('')
-  }
-  
 
 //////////////////////////////////////////playermoves///////////////////////////////////////////////
 
 const pick = (e) => {
     draggedPiece = e.target;
-    console.log(draggedPiece.parentNode.getAttribute('square-id'))
 };
 
 const dragover = (e) => {
@@ -80,17 +61,15 @@ const dragover = (e) => {
 }
 
 const drop = (e) => {
-    dropLocation = e.target
-    console.log(dropLocation)
-    e.target.innerHTML =""
-    e.target.appendChild(draggedPiece)
-    /*if(validMove = true){
-        commitMove;
-        isWhiteTurn = !isWhiteTurn
-    } else{
-        return('invalid move')
-    }*/
-} 
+  dropLocation = e.target
+  
+  if (draggedPiece === 'pawn' && draggedPiece.classList.contains('white-piece') && dropPosition === parseInt(draggedPiece.parentNode.getAttribute('square-id')) - 1) {validMove = true
+  } 
+
+  if (validMove = true){
+    dropLocation.innerHTML = ('')
+    dropLocation.appendChild(draggedPiece)
+    isWhiteTurn = !isWhiteTurn}}
 
 ///////////////////////////////////////board////////////////////////////////////////////////
 
