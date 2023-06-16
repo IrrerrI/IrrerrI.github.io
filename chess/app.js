@@ -50,12 +50,14 @@ createGame();
 let validMove
 let draggedPiece
 let dropLocation
+
 if (draggedPiece === 'pawn' && draggedPiece.classList.contains('white-piece') && dropPosition === parseInt(draggedPiece.parentNode.getAttribute('square-id')) - 8) {
     validMove = true;
   } else {
     validMove = false;
   }
-  const commitMove = (e) => {
+
+const commitMove = (e) => {
     if (
         dropLocation.classList.contains('square')
         )
