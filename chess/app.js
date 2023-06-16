@@ -49,13 +49,20 @@ createGame();
 ///////////////////////////////////////////logic////////////////////////////////////////////////////
 let validMove
 let draggedPiece
+let dropLocation
 if (draggedPiece === 'pawn' && draggedPiece.classList.contains('white-piece') && dropPosition === parseInt(draggedPiece.parentNode.getAttribute('square-id')) - 8) {
     validMove = true;
   } else {
     validMove = false;
   }
   const commitMove = (e) => {
-    
+    if (
+        dropLocation.classList.contains('square')
+        )
+        {
+dropLocation.appendChild(draggedPiece)
+    }
+    dropLocation.parentNode.innerHTML('')
   }
   
 
@@ -66,15 +73,21 @@ const pick = (e) => {
     console.log(draggedPiece.parentNode.getAttribute('square-id'))
 };
 
-const drop = (e) => {
+const dragover = (e) => {
     e.preventDefault();
+}
+
+const drop = (e) => {
+    dropLocation = e.target
+    console.log(dropLocation)
+    e.target.innerHTML =""
     e.target.appendChild(draggedPiece)
-    if(validMove = true){
+    /*if(validMove = true){
         commitMove;
         isWhiteTurn = !isWhiteTurn
     } else{
         return('invalid move')
-    }
+    }*/
 } 
 
 ///////////////////////////////////////board////////////////////////////////////////////////
@@ -84,6 +97,7 @@ const chessPieces = document.querySelectorAll('.piece')
 chessPieces.forEach(chessPiece =>{
     chessPiece.addEventListener('dragstart', pick)
     chessPiece.addEventListener('drop', drop)
+    chessPiece.addEventListener('dragover', dragover)
 })
 
 const blackPieces = Array.from(chessPieces).splice(0, 16)
