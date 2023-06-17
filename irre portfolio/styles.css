@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 2vw;
+
+}
+
+.container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.listItem:hover{
+    background-color: white;
+    color: black;
+    max-width: 40%;
+}
