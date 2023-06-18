@@ -27,74 +27,24 @@ const piecesOrigin = [
     rook,knight,bishop,queen,king,bishop,knight,rook,
 ]
 
-///////////////////////////////////////////creatingGame////////////////////////////////////////
-
 const rowNumber = piecesOrigin.length / 8;
 let isWhiteTurn = true
+let validMove
 
-  
-
+/////////////////////////////////////////////functions///////////////////////////////////////////////
 const createGame =() => {
-    piecesOrigin.forEach((pieceOrigin, i)=> {
-       const square = document.createElement('div');
-       square.setAttribute('square-id', i);
-       square.classList.add('square');
-       square.innerHTML = pieceOrigin;
-       gameBoard.appendChild(square);
-       if ((i % 2 === 0) ^ (i / rowNumber) % 2) {
-        square.classList.add('colored');}
-    });
+  piecesOrigin.forEach((pieceOrigin, i)=> {
+     const square = document.createElement('div');
+     square.setAttribute('square-id', i);
+     square.classList.add('square');
+     square.innerHTML = pieceOrigin;
+     gameBoard.appendChild(square);
+     if ((i % 2 === 0) ^ (i / rowNumber) % 2) {
+      square.classList.add('colored');}
+  });
 };
 
-createGame();
-
-///////////////////////////////////////////logic////////////////////////////////////////////////////
-let draggedPiece
-let dropLocation
-
-const changeTurn = () => {
-
-isWhiteTurn = !isWhiteTurn
-console.log(isWhiteTurn)}
-
-//////////////////////////////////////////playermoves///////////////////////////////////////////////
-
-const pick = (e) => {
-    draggedPiece = e.target;
-};
-
-const dragover = (e) => {
-    e.preventDefault();
-}
-
-const drop = (e) => {
-  changeTurn()
-  dropLocation = e.target
-    dropLocation.innerHTML = ('')
-    dropLocation.appendChild(draggedPiece)
-   
-}
-  
-
-///////////////////////////////////////board////////////////////////////////////////////////
-
-
-const chessPieces = document.querySelectorAll('.piece')
-chessPieces.forEach(chessPiece =>{
-    chessPiece.addEventListener('dragstart', pick)
-    chessPiece.addEventListener('drop', drop)
-    chessPiece.addEventListener('dragover', dragover)
-})
-
-const blackPieces = Array.from(chessPieces).splice(0, 16)
-const whitePieces = Array.from(chessPieces).splice(16, 31)
-
-blackPieces.forEach(blackPiece =>
-blackPiece.firstChild.classList.add('blackpiece'))
-whitePieces.forEach(whitePiece =>
-whitePiece.firstChild.classList.add('whitepiece'))
-
-switch (isWhiteTurn) {
+const setPlayer =() => {switch (isWhiteTurn) {
   case true:
     whitePieces.forEach(whitePiece => {
       whitePiece.draggable = true;
@@ -114,4 +64,86 @@ switch (isWhiteTurn) {
     });
     playerDisplay.innerHTML ='black turn'
     break;
+}}
+
+const checkValid =() => {switch (draggedPiece) {
+  case pawn:
+    if(draggedPiece.classList.contains('whitepiece') && dropLocation === originSquare - 8){
+         validMove = true} 
+       else if (draggedPiece.classList.contains('blackpiece') && dropLocation === originSquare + 8){
+         validMove = true} 
+        else validMove = false
+    break;    
+  /*case knight:
+    break;
+  case bishop:
+      break;
+  case rook:
+    break;
+  case queen:
+    break;
+  case king:
+    break;*/
+  }
 }
+
+
+  const commitMove = () => {
+    if (dropLocation.classList.contains('piece')){
+    const dropSquare = dropLocation.parentNode
+    dropSquare.innerHTML = ('')
+    dropSquare.appendChild(draggedPiece)
+  }
+  isWhiteTurn = !isWhiteTurn
+    setPlayer()
+  }
+
+
+  const pick = (e) => {
+    draggedPiece = e.target;
+    originSquare = e.target.parentNode.getAttribute('square-id')
+};
+
+const dragover = (e) => {
+    e.preventDefault();
+}
+
+const drop = (e) => {
+  dropLocation = e.target
+  checkValid()
+  if (validMove = true){
+    console.log(validMove)
+    commitMove()
+  } }
+
+
+
+///////////////////////////////////////////logic////////////////////////////////////////////////////
+let draggedPiece
+let dropLocation
+let isValidMove
+
+
+
+
+
+createGame();
+///////////////////////////////////////board////////////////////////////////////////////////
+
+
+const chessPieces = document.querySelectorAll('.piece')
+chessPieces.forEach(chessPiece =>{
+    chessPiece.addEventListener('dragstart', pick)
+    chessPiece.addEventListener('drop', drop)
+    chessPiece.addEventListener('dragover', dragover)
+})
+
+const blackPieces = Array.from(chessPieces).splice(0, 16)
+const whitePieces = Array.from(chessPieces).splice(16, 31)
+
+blackPieces.forEach(blackPiece =>
+blackPiece.firstChild.classList.add('blackpiece'))
+whitePieces.forEach(whitePiece =>
+whitePiece.firstChild.classList.add('whitepiece'))
+
+setPlayer()
