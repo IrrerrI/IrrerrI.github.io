@@ -2,7 +2,7 @@
 ///////////////////////////////////////////selectors//////////////////////////////////////////////////////
 
 const gameBoard = document.querySelector('.game-board')
-
+const playerDisplay = document.querySelector('.player-display')
 
 
 //////////////////////////////////////////////////pieces/////////////////////////////////
@@ -32,6 +32,8 @@ const piecesOrigin = [
 const rowNumber = piecesOrigin.length / 8;
 let isWhiteTurn = true
 
+  
+
 const createGame =() => {
     piecesOrigin.forEach((pieceOrigin, i)=> {
        const square = document.createElement('div');
@@ -50,6 +52,11 @@ createGame();
 let draggedPiece
 let dropLocation
 
+const changeTurn = () => {
+
+isWhiteTurn = !isWhiteTurn
+console.log(isWhiteTurn)}
+
 //////////////////////////////////////////playermoves///////////////////////////////////////////////
 
 const pick = (e) => {
@@ -61,15 +68,13 @@ const dragover = (e) => {
 }
 
 const drop = (e) => {
+  changeTurn()
   dropLocation = e.target
-  
-  if (draggedPiece === 'pawn' && draggedPiece.classList.contains('white-piece') && dropPosition === parseInt(draggedPiece.parentNode.getAttribute('square-id')) - 1) {validMove = true
-  } 
-
-  if (validMove = true){
     dropLocation.innerHTML = ('')
     dropLocation.appendChild(draggedPiece)
-    isWhiteTurn = !isWhiteTurn}}
+   
+}
+  
 
 ///////////////////////////////////////board////////////////////////////////////////////////
 
@@ -89,23 +94,24 @@ blackPiece.firstChild.classList.add('blackpiece'))
 whitePieces.forEach(whitePiece =>
 whitePiece.firstChild.classList.add('whitepiece'))
 
-if (isWhiteTurn = true) {
+switch (isWhiteTurn) {
+  case true:
     whitePieces.forEach(whitePiece => {
       whitePiece.draggable = true;
     });
     blackPieces.forEach(blackPiece => {
-        blackPiece.draggable = false;
+      blackPiece.draggable = false;
     });
-  } 
-  else {
+    playerDisplay.innerHTML ='white turn'
+    break;
+    
+  case false:
     whitePieces.forEach(whitePiece => {
       whitePiece.draggable = false;
     });
     blackPieces.forEach(blackPiece => {
-        blackPiece.draggable = true;
+      blackPiece.draggable = true;
     });
-  }
-
-
-
-
+    playerDisplay.innerHTML ='black turn'
+    break;
+}
