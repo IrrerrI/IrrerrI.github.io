@@ -10,9 +10,9 @@ const piecesOrigin = [
     piece,'',piece,'',piece,'',piece,'',
     '','','','','','','','',
     '','','','','','','','',
-    piece,'',piece,'',piece,'',piece,'',
     '',piece,'',piece,'',piece,'',piece,
-    piece,'',piece,'',piece,'',piece,''
+    piece,'',piece,'',piece,'',piece,'',
+    '',piece,'',piece,'',piece,'',piece
 ]
 const rowNumber = piecesOrigin.length / 8;
 let isRedTurn = true
@@ -24,8 +24,6 @@ let isRedTurn = true
 
 
 
-//isRedTurn = piecesRed.classList.add('draggable')
-//if (isRedTurn = fales) {piecesBlue.classList.add('draggable')}
 
 const createGame =() => {
     piecesOrigin.forEach((pieceOrigin, i)=> {
@@ -42,3 +40,45 @@ const createGame =() => {
 
 
 createGame()
+
+
+const pick =() =>{
+    isRedTurn = !isRedTurn
+    console.log(isRedTurn)
+}
+
+const allPieces = document.querySelectorAll('.piece')
+allPieces.forEach(allPiece =>{
+    allPiece.addEventListener('dragstart', pick)})/*
+    allPiece.addEventListener('drop', drop)
+    allPiece.addEventListener('dragover', dragover)
+})*/
+
+const blackPieces = Array.from(allPieces).splice(0, 12)
+const redPieces = Array.from(allPieces).splice(12, 25)
+
+redPieces.forEach(redPiece =>
+redPiece.firstChild.classList.add('redpiece'))
+blackPieces.forEach(blackPiece =>
+blackPiece.firstChild.classList.add('blackpiece'))
+
+switch (isRedTurn) {
+    case true:
+      redPieces.forEach(redPiece => {
+        redPiece.draggable = true;
+      });
+      blackPieces.forEach(blackPiece => {
+        blackPiece.draggable = false;
+      });
+      break;
+      
+    case false:
+      redPieces.forEach(redPiece => {
+        redPiece.draggable = false;
+      });
+      blackPieces.forEach(blackPiece => {
+        blackPiece.draggable = true;
+      });
+      break;
+  }
+  
