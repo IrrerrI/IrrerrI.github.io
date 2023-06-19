@@ -129,6 +129,8 @@ const checkValid = () => {
     dropSquare = dropLocation.parentNode
     dropSquare.innerHTML = ('')
     dropSquare.appendChild(draggedPiece)
+  } else if (dropLocation.classList.contains('square')){
+    dropLocation.appendChild(draggedPiece)
   }
   isWhiteTurn = !isWhiteTurn
     setPlayer()
