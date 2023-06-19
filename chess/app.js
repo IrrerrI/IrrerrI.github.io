@@ -3,6 +3,10 @@
 
 const gameBoard = document.querySelector('.game-board')
 const playerDisplay = document.querySelector('.player-display')
+let draggedPiece
+let dropLocation
+let isValidMove
+
 
 
 //////////////////////////////////////////////////pieces/////////////////////////////////
@@ -116,13 +120,7 @@ const checkValid = () => {
   } else {
     validMove = false;
   }
-
-  console.log(validMove)
 };
-
-
-
-
 
   const commitMove = () => {
     if (dropLocation.classList.contains('piece')){
@@ -157,19 +155,8 @@ const drop = (e) => {
   } }
 
 
-
-///////////////////////////////////////////logic////////////////////////////////////////////////////
-let draggedPiece
-let dropLocation
-let isValidMove
-
-
-
-
-
-createGame();
 ///////////////////////////////////////board////////////////////////////////////////////////
-
+createGame();
 
 const chessPieces = document.querySelectorAll('.piece')
 chessPieces.forEach(chessPiece =>{
