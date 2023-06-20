@@ -49,6 +49,111 @@ const createGame =() => {
   });
 };
 
+const pick = (e) => {
+  draggedPiece = e.target;
+  originSquare = e.target.parentNode.getAttribute('square-id')
+
+};
+
+const dragover = (e) => {
+  e.preventDefault();
+}
+
+const drop = (e) => {
+e.preventDefault();
+dropLocation = e.target
+if(dropLocation.classList.contains('square')){
+  targetSquare = dropLocation
+}
+checkValid(targetSquare)
+if (validMove == true){
+  commitMove()
+} 
+}
+
+const checkValid = (targetSquare) => {
+  console.log(originSquare)
+  console.log(targetSquare.getAttribute('square-id'))
+  if (draggedPiece.classList.contains('pawn')) {
+    if (draggedPiece.firstChild.classList.contains('whitepiece')) {
+      if (dropLocation.parentNode.getAttribute('square-id') == originSquare - 8) {
+        validMove = true;
+      } else {
+        validMove = false
+      }
+    }
+  } else if (draggedPiece.classList.contains('knight') && draggedPiece.firstChild.classList.contains('whitepiece')) {
+    if (
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 18) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 14) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 10) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 6) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 18) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 14) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 10) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 6) ||
+      targetSquare.getAttribute('square-id') == (originSquare - 18) ||
+      targetSquare.getAttribute('square-id') == (originSquare - 14) ||
+      targetSquare.getAttribute('square-id') == (originSquare - 10) ||
+      targetSquare.getAttribute('square-id') == (originSquare - 6) ||
+      targetSquare.getAttribute('square-id') == (originSquare + 18) ||
+      targetSquare.getAttribute('square-id') == (originSquare + 14) ||
+      targetSquare.getAttribute('square-id') == (originSquare + 10) ||
+      targetSquare.getAttribute('square-id') == (originSquare + 6)
+    ) {
+      validMove = true;
+      console.log('working')
+    } else {
+      validMove = false
+    }
+  } else if (draggedPiece.classList.contains('rook')){
+    if (
+      (dropLocation.parentNode.getAttribute('square-id') - originSquare) % 8 === 0 ||
+      (dropLocation.parentNode.getAttribute('square-id') + originSquare) % 8 === 0
+    ) {
+      validMove == true;
+    } else {
+      validMove == false
+    }
+  } else if (draggedPiece.classList.contains('king')) {
+    if (
+      dropLocation.parentNode.getAttribute('square-id') == originSquare - 1 ||
+      dropLocation.parentNode.getAttribute('square-id') == originSquare - 8 ||
+      dropLocation.parentNode.getAttribute('square-id') == originSquare + 8 ||
+      dropLocation.parentNode.getAttribute('square-id') == originSquare + 1
+    ) {
+      validMove == true;
+    } else {
+      validMove == false
+    }
+  } else if (draggedPiece.classList.contains('queen')) {
+    if (
+      (dropLocation.parentNode.getAttribute('square-id') - originSquare) % 8 === 0 ||
+      (dropLocation.parentNode.getAttribute('square-id') + originSquare) % 8 === 0
+    ) {
+      validMove == true;
+    }
+  } else {
+    validMove == false;
+  }
+};
+
+  const commitMove = () => {
+    console.log('committing')
+    if (dropLocation.classList.contains('piece')){
+    dropSquare = dropLocation.parentNode
+    dropSquare.innerHTML = ('')
+    dropSquare.appendChild(draggedPiece)
+  } else if (dropLocation.classList.contains('square')){
+    dropLocation.appendChild(draggedPiece)
+  }
+  isWhiteTurn = !isWhiteTurn
+    setPlayer()
+  }
+
+
+
+
 const setPlayer =() => {switch (isWhiteTurn) {
   case true:
     whitePieces.forEach(whitePiece => {
@@ -72,97 +177,6 @@ const setPlayer =() => {switch (isWhiteTurn) {
 }
 }
 
-const checkValid = () => {
-  console.log(originSquare)
-  console.log(dropLocation.parentNode.getAttribute('square-id'))
-  if (draggedPiece.classList.contains('pawn')) {
-    if (draggedPiece.firstChild.classList.contains('whitepiece')) {
-      if (dropLocation.parentNode.getAttribute('square-id') == originSquare - 8) {
-        validMove = true;
-      }
-    }
-  } else if (draggedPiece.classList.contains('knight') && draggedPiece.firstChild.classList.contains('whitepiece')) {
-    if (
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 18) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 14) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 10) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 6) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 18) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 14) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 10) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 6) ||
-      dropLocation.getAttribute('square-id') == (originSquare - 18) ||
-      dropLocation.getAttribute('square-id') == (originSquare - 14) ||
-      dropLocation.getAttribute('square-id') == (originSquare - 10) ||
-      dropLocation.getAttribute('square-id') == (originSquare - 6) ||
-      dropLocation.getAttribute('square-id') == (originSquare + 18) ||
-      dropLocation.getAttribute('square-id') == (originSquare + 14) ||
-      dropLocation.getAttribute('square-id') == (originSquare + 10) ||
-      dropLocation.getAttribute('square-id') == (originSquare + 6)
-    ) {
-      validMove = true;
-    }
-  } else if (draggedPiece.classList.contains('rook')){
-    if (
-      (dropLocation.parentNode.getAttribute('square-id') - originSquare) % 8 === 0 ||
-      (dropLocation.parentNode.getAttribute('square-id') + originSquare) % 8 === 0
-    ) {
-      validMove = true;
-    }
-  } else if (draggedPiece.classList.contains('king')) {
-    if (
-      dropLocation.parentNode.getAttribute('square-id') == originSquare - 1 ||
-      dropLocation.parentNode.getAttribute('square-id') == originSquare - 8 ||
-      dropLocation.parentNode.getAttribute('square-id') == originSquare + 8 ||
-      dropLocation.parentNode.getAttribute('square-id') == originSquare + 1
-    ) {
-      validMove = true;
-    }
-  } else if (draggedPiece.classList.contains('queen')) {
-    if (
-      (dropLocation.parentNode.getAttribute('square-id') - originSquare) % 8 === 0 ||
-      (dropLocation.parentNode.getAttribute('square-id') + originSquare) % 8 === 0
-    ) {
-      validMove = true;
-    }
-  } else {
-    validMove = false;
-  }
-};
-
-  const commitMove = () => {
-    console.log('working')
-    if (dropLocation.classList.contains('piece')){
-    dropSquare = dropLocation.parentNode
-    dropSquare.innerHTML = ('')
-    dropSquare.appendChild(draggedPiece)
-  } else if (dropLocation.classList.contains('square')){
-    dropLocation.appendChild(draggedPiece)
-  }
-  isWhiteTurn = !isWhiteTurn
-    setPlayer()
-  }
-
-
-  const pick = (e) => {
-    draggedPiece = e.target;
-    originSquare = e.target.parentNode.getAttribute('square-id')
-
-};
-
-const dragover = (e) => {
-    e.preventDefault();
-}
-
-const drop = (e) => {
-  e.preventDefault();
-  dropLocation = e.target
-  //checkValid()
-  console.log(dropLocation.getAttribute('square-id'))
-  //if (validMove == true){
-    commitMove()
-  //} 
-}
 
 
 ///////////////////////////////////////board////////////////////////////////////////////////
