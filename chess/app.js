@@ -90,7 +90,15 @@ const checkValid = () => {
       dropLocation.parentNode.getAttribute('square-id') == (originSquare + 18) ||
       dropLocation.parentNode.getAttribute('square-id') == (originSquare + 14) ||
       dropLocation.parentNode.getAttribute('square-id') == (originSquare + 10) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 6)
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 6) ||
+      dropLocation.getAttribute('square-id') == (originSquare - 18) ||
+      dropLocation.getAttribute('square-id') == (originSquare - 14) ||
+      dropLocation.getAttribute('square-id') == (originSquare - 10) ||
+      dropLocation.getAttribute('square-id') == (originSquare - 6) ||
+      dropLocation.getAttribute('square-id') == (originSquare + 18) ||
+      dropLocation.getAttribute('square-id') == (originSquare + 14) ||
+      dropLocation.getAttribute('square-id') == (originSquare + 10) ||
+      dropLocation.getAttribute('square-id') == (originSquare + 6)
     ) {
       validMove = true;
     }
@@ -123,6 +131,7 @@ const checkValid = () => {
 };
 
   const commitMove = () => {
+    console.log('working')
     if (dropLocation.classList.contains('piece')){
     dropSquare = dropLocation.parentNode
     dropSquare.innerHTML = ('')
@@ -148,21 +157,28 @@ const dragover = (e) => {
 const drop = (e) => {
   e.preventDefault();
   dropLocation = e.target
-  checkValid()
-  if (validMove == true){
-    console.log(validMove)
+  //checkValid()
+  console.log(dropLocation.getAttribute('square-id'))
+  //if (validMove == true){
     commitMove()
-  } }
+  //} 
+}
 
 
 ///////////////////////////////////////board////////////////////////////////////////////////
 createGame();
 
 const chessPieces = document.querySelectorAll('.piece')
+const squares = document.querySelectorAll('.square')
 chessPieces.forEach(chessPiece =>{
     chessPiece.addEventListener('dragstart', pick)
     chessPiece.addEventListener('drop', drop)
     chessPiece.addEventListener('dragover', dragover)
+})
+
+squares.forEach(square =>{
+  square.addEventListener('dragover', dragover)
+  square.addEventListener('drop', drop)
 })
 
 const blackPieces = Array.from(chessPieces).splice(0, 16)
