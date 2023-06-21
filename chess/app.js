@@ -5,6 +5,7 @@ const gameBoard = document.querySelector('.game-board')
 const playerDisplay = document.querySelector('.player-display')
 let draggedPiece
 let targetSquareID
+let targetSquare
 let isValidMove
 
 
@@ -60,13 +61,13 @@ const dragover = (e) => {
 
 const drop = (e) => {
 e.preventDefault();
-console.log(e.target)
-if(e.target.classList.contains('square')){
-  targetSquareID = e.target.getAttribute('square-id')
-  targetSquare = e.target
-} else if(e.target.classList.contains('piece')){
-  targetSquareID = e.target.parentNode.getAttribute('square-id')
-  targetSquare = e.target.parentNode
+const target = e.target
+if(target.classList.contains('square')){
+  targetSquareID = target.getAttribute('square-id')
+  targetSquare = target
+} else if(target.classList.contains('piece')){
+  targetSquareID = target.parentNode.getAttribute('square-id')
+  targetSquare = target.parentNode
 }
 checkValid(targetSquareID, originSquare)
 if (validMove == true){
@@ -78,6 +79,7 @@ if (validMove == true){
 const checkValid = (targetSquareID, originSquare) => {
   //console.log(originSquare)
   //console.log(targetSquareID)
+  console.log()
   if (draggedPiece.classList.contains('pawn')) {
     if (draggedPiece.firstChild.classList.contains('whitepiece')) {
       if (targetSquareID == originSquare - 8)
