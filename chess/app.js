@@ -4,7 +4,7 @@
 const gameBoard = document.querySelector('.game-board')
 const playerDisplay = document.querySelector('.player-display')
 let draggedPiece
-let targetSquare
+let targetSquareID
 let isValidMove
 
 
@@ -60,22 +60,27 @@ const dragover = (e) => {
 
 const drop = (e) => {
 e.preventDefault();
+console.log(e.target)
 if(e.target.classList.contains('square')){
-  targetSquare = e.target.getAttribute('square-id')
-} else targetSquare = e.target.parentNode.getAttribute('square-id')
-checkValid(targetSquare, originSquare)
+  targetSquareID = e.target.getAttribute('square-id')
+  targetSquare = e.target
+} else if(e.target.classList.contains('piece')){
+  targetSquareID = e.target.parentNode.getAttribute('square-id')
+  targetSquare = e.target.parentNode
+}
+checkValid(targetSquareID, originSquare)
 if (validMove == true){
-  commitMove(targetSquare, originSquare)
+  commitMove(targetSquareID, originSquare)
 } 
-console.log(validMove)
+//console.log(validMove)
 }
 
-const checkValid = (targetSquare, originSquare) => {
-  console.log(originSquare)
-  console.log(targetSquare)
+const checkValid = (targetSquareID, originSquare) => {
+  //console.log(originSquare)
+  //console.log(targetSquareID)
   if (draggedPiece.classList.contains('pawn')) {
     if (draggedPiece.firstChild.classList.contains('whitepiece')) {
-      if (targetSquare == originSquare - 8)
+      if (targetSquareID == originSquare - 8)
       {
         validMove = true;
       } else {
@@ -83,8 +88,8 @@ const checkValid = (targetSquare, originSquare) => {
       }
     }
   } else if (draggedPiece.firstChild.classList.contains('blackpiece')){
-    if (targetSquare == originSquare + 8 ||
-    targetSquare == originSquare + 8)
+    if (targetSquareID == originSquare + 8 ||
+    targetSquareID == originSquare + 8)
     {
       validMove = true;
     } else {
@@ -95,14 +100,14 @@ const checkValid = (targetSquare, originSquare) => {
   else if (draggedPiece.classList.contains('knight') && draggedPiece.firstChild.classList.contains('whitepiece')) {
     if (
 
-      targetSquare == (originSquare - 17) ||
-      targetSquare == (originSquare - 15) ||
-      targetSquare == (originSquare - 10) ||
-      targetSquare == (originSquare - 6) ||
-      targetSquare == (originSquare + 17) ||
-      targetSquare == (originSquare + 15) ||
-      targetSquare == (originSquare + 10) ||
-      targetSquare == (originSquare + 6)
+      targetSquareID == (originSquare - 17) ||
+      targetSquareID == (originSquare - 15) ||
+      targetSquareID == (originSquare - 10) ||
+      targetSquareID == (originSquare - 6) ||
+      targetSquareID == (originSquare + 17) ||
+      targetSquareID == (originSquare + 15) ||
+      targetSquareID == (originSquare + 10) ||
+      targetSquareID == (originSquare + 6)
     ) {
       validMove = true;
       
@@ -111,8 +116,8 @@ const checkValid = (targetSquare, originSquare) => {
     }
   } else if (draggedPiece.classList.contains('rook')){
     if (
-      (targetSquare - originSquare) % 8 === 0 ||
-      (targetSquare + originSquare) % 8 === 0
+      (targetSquareID - originSquare) % 8 === 0 ||
+      (targetSquareID + originSquare) % 8 === 0
     ) {
       validMove == true;
     } else {
@@ -120,10 +125,10 @@ const checkValid = (targetSquare, originSquare) => {
     }
   } else if (draggedPiece.classList.contains('king')) {
     if (
-      targetSquare == originSquare - 1 ||
-      targetSquare == originSquare - 8 ||
-      targetSquare == originSquare + 8 ||
-      targetSquare == originSquare + 1
+      targetSquareID == originSquare - 1 ||
+      targetSquareID == originSquare - 8 ||
+      targetSquareID == originSquare + 8 ||
+      targetSquareID == originSquare + 1
     ) {
       validMove == true;
     } else {
@@ -131,8 +136,8 @@ const checkValid = (targetSquare, originSquare) => {
     }
   } else if (draggedPiece.classList.contains('queen')) {
     if (
-      (targetSquare - originSquare) % 8 === 0 ||
-      (targetSquare + originSquare) % 8 === 0
+      (targetSquareID - originSquare) % 8 === 0 ||
+      (targetSquareID + originSquare) % 8 === 0
     ) {
       validMove == true;
     }
