@@ -65,39 +65,50 @@ dropLocation = e.target
 if(dropLocation.classList.contains('square')){
   targetSquare = dropLocation
 }
-checkValid(targetSquare)
+checkValid()
 if (validMove == true){
   commitMove()
 } 
 }
 
-const checkValid = (targetSquare) => {
-  console.log(originSquare)
-  console.log(targetSquare.getAttribute('square-id'))
+const checkValid = () => {
+
   if (draggedPiece.classList.contains('pawn')) {
     if (draggedPiece.firstChild.classList.contains('whitepiece')) {
-      if (dropLocation.parentNode.getAttribute('square-id') == originSquare - 8) {
+      if (dropLocation.parentNode.getAttribute('square-id') == originSquare - 8 ||
+      targetSquare.getAttribute('square-id') == originSquare - 8)
+      {
         validMove = true;
       } else {
         validMove = false
       }
     }
-  } else if (draggedPiece.classList.contains('knight') && draggedPiece.firstChild.classList.contains('whitepiece')) {
+  } else if (draggedPiece.firstChild.classList.contains('blackpiece')){
+    if (dropLocation.parentNode.getAttribute('square-id') == originSquare + 8 ||
+    targetSquare.getAttribute('square-id') == originSquare + 8)
+    {
+      validMove = true;
+    } else {
+      validMove = false
+    }
+  } 
+  
+  else if (draggedPiece.classList.contains('knight') && draggedPiece.firstChild.classList.contains('whitepiece')) {
     if (
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 18) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 14) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 17) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare - 15) ||
       dropLocation.parentNode.getAttribute('square-id') == (originSquare - 10) ||
       dropLocation.parentNode.getAttribute('square-id') == (originSquare - 6) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 18) ||
-      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 14) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 17) ||
+      dropLocation.parentNode.getAttribute('square-id') == (originSquare + 15) ||
       dropLocation.parentNode.getAttribute('square-id') == (originSquare + 10) ||
       dropLocation.parentNode.getAttribute('square-id') == (originSquare + 6) ||
-      targetSquare.getAttribute('square-id') == (originSquare - 18) ||
-      targetSquare.getAttribute('square-id') == (originSquare - 14) ||
+      targetSquare.getAttribute('square-id') == (originSquare - 17) ||
+      targetSquare.getAttribute('square-id') == (originSquare - 15) ||
       targetSquare.getAttribute('square-id') == (originSquare - 10) ||
       targetSquare.getAttribute('square-id') == (originSquare - 6) ||
-      targetSquare.getAttribute('square-id') == (originSquare + 18) ||
-      targetSquare.getAttribute('square-id') == (originSquare + 14) ||
+      targetSquare.getAttribute('square-id') == (originSquare + 17) ||
+      targetSquare.getAttribute('square-id') == (originSquare + 15) ||
       targetSquare.getAttribute('square-id') == (originSquare + 10) ||
       targetSquare.getAttribute('square-id') == (originSquare + 6)
     ) {
