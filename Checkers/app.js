@@ -70,9 +70,13 @@ if (validMove == true){
 }
 
 const checkValid = (targetSquareID, originSquare) => {
+  if (draggedPiece.firstChild.classList.contains('redpiece') && (targetSquareID = originSquare - 9)){
+    validMove = true 
+    console.log('shit')
+  } else validMove = false
   //console.log(originSquare)
   //console.log(targetSquareID)
-  console.log()
+  console.log(validMove)
   
 };
 
@@ -147,4 +151,10 @@ switch (isRedTurn) {
       });
       break;
   }
+  
+  const squares = document.querySelectorAll('.square')
+  squares.forEach(square =>{
+    square.addEventListener('dragover', dragover)
+    square.addEventListener('drop', drop)
+  })
   
