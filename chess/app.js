@@ -80,8 +80,61 @@ if (validMove == true){
 const checkValid = (targetSquareID) => {
 
   checkPiece()
-  
-  if (draggedPiece.classList.contains('pawn')&& draggedPiece.firstChild.classList.contains('whitepiece')) {
+    switch (chosenPiece) {
+      case 'pawn':
+        if (chosenPiece.firstChild.classList.contains('whitepiece')) {
+          if (pawnMovesWhite.includes(targetSquareID)) {
+            validMove = true;
+          } else {
+            validMove = false;
+          }
+        } else if (chosenPiece.firstChild.classList.contains('blackpiece')) {
+          if (pawnMovesBlack.includes(targetSquareID)) {
+            validMove = true;
+          } else {
+            validMove = false;
+          }
+        }
+        break;
+    
+      case 'knight':
+        if (knightMoves.includes(targetSquareID)) {
+          validMove = true;
+        } else 
+          validMove = false;
+        break;
+    
+      case 'bishop':
+        if (bishopMoves.includes(targetSquareID)) {
+          validMove = true;
+        } else 
+          validMove = false;
+        break;
+    
+      case 'rook':
+        if (rookMoves.includes(targetSquareID)) {
+          validMove = true;
+        } else 
+          validMove = false;
+        break;
+    
+      case 'queen':
+        if (queenMoves.includes(targetSquareID)) {
+          validMove = true;
+        } else 
+          validMove = false;
+        break;
+    
+      case 'king':
+        if (kingMoves.includes(targetSquareID)) {
+          validMove = true;
+        } else {
+          validMove = false;
+        break;
+    }
+  } 
+}
+  /*if draggedPiece.classList.contains('pawn')&& draggedPiece.firstChild.classList.contains('whitepiece')) {
     if (pawnMovesWhite.includes(targetSquareID)) {
       validChoice = true;
     } else validMove = false
@@ -104,7 +157,7 @@ const checkValid = (targetSquareID) => {
     } else {
       validMove == false
     }
-  }
+  }*/
 
   checkPiece = () => {
     const chosenPiece = draggedPiece.classList[0]
