@@ -77,77 +77,39 @@ if (validMove == true){
 //console.log(validMove)
 }
 
-const checkValid = (targetSquareID, originSquare) => {
-  //console.log(originSquare)
-  //console.log(targetSquareID)
-  console.log()
-  if (draggedPiece.classList.contains('pawn')) {
-    if (draggedPiece.firstChild.classList.contains('whitepiece')) {
-      if (targetSquareID == originSquare - 8)
-      {
-        validMove = true;
-      } else {
-        validMove = false
-      }
-    }
-  } else if (draggedPiece.firstChild.classList.contains('blackpiece')){
-    if (targetSquareID == originSquare + 8 ||
-    targetSquareID == originSquare + 8)
-    {
-      validMove = true;
-    } else {
-      validMove = false
-    }
+const checkValid = (targetSquareID) => {
+
+  checkPiece()
+  
+  if (draggedPiece.classList.contains('pawn')&& draggedPiece.firstChild.classList.contains('whitepiece')) {
+    if (pawnMovesWhite.includes(targetSquareID)) {
+      validChoice = true;
+    } else validMove = false
+  } else if (draggedPiece.classList.contains('pawn')&& draggedPiece.firstChild.classList.contains('blackpiece')){
+    if (pawnMovesBlack.includes(targetSquareID)) {
+      validChoice = true;
+    } else validMove = false
   } 
   
-  else if (draggedPiece.classList.contains('knight') && draggedPiece.firstChild.classList.contains('whitepiece')) {
-    if (
-
-      targetSquareID == (originSquare - 17) ||
-      targetSquareID == (originSquare - 15) ||
-      targetSquareID == (originSquare - 10) ||
-      targetSquareID == (originSquare - 6) ||
-      targetSquareID == (originSquare + 17) ||
-      targetSquareID == (originSquare + 15) ||
-      targetSquareID == (originSquare + 10) ||
-      targetSquareID == (originSquare + 6)
-    ) {
-      validMove = true;
-      
+  else if (draggedPiece.classList.contains('knight')) {
+    if (knightMoves.includes(targetSquareID)) {
+      validChoice = true;
     } else {
-      validMove = false
+      validMove = true;
     }
   } else if (draggedPiece.classList.contains('rook')){
-    if (
-      (targetSquareID - originSquare) % 8 === 0 ||
-      (targetSquareID + originSquare) % 8 === 0
-    ) {
-      validMove == true;
+    if (rookMoves.includes(targetSquareID)) {
+      validChoice = true;
+    }
     } else {
       validMove == false
     }
-  } else if (draggedPiece.classList.contains('king')) {
-    if (
-      targetSquareID == originSquare - 1 ||
-      targetSquareID == originSquare - 8 ||
-      targetSquareID == originSquare + 8 ||
-      targetSquareID == originSquare + 1
-    ) {
-      validMove == true;
-    } else {
-      validMove == false
-    }
-  } else if (draggedPiece.classList.contains('queen')) {
-    if (
-      (targetSquareID - originSquare) % 8 === 0 ||
-      (targetSquareID + originSquare) % 8 === 0
-    ) {
-      validMove == true;
-    }
-  } else {
-    validMove == false;
   }
-};
+
+  checkPiece = () => {
+    const chosenPiece = draggedPiece.classList[0]
+    console.log(chosenPiece)
+  }
 
   const commitMove = () => {
     console.log('committing')
