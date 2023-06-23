@@ -35,6 +35,7 @@ const rowNumber = piecesOrigin.length / 8;
 let isWhiteTurn = true
 let validMove
 let dropSquare
+let validMovesKing
 
 /////////////////////////////////////////////functions///////////////////////////////////////////////
 const createGame =() => {
@@ -152,12 +153,27 @@ const checkValid = (targetSquareID, originSquare) => {
     console.log('committing')
     targetSquare.innerHTML = ('')
     targetSquare.appendChild(draggedPiece)
-  isWhiteTurn = !isWhiteTurn
-    setPlayer()
+    isWhiteTurn = !isWhiteTurn
+    checkState()
+  
   }
 
 
+const checkState = () =>{
+  if (validMovesKing = null){
+    gameOver = true
+  } else gameOver = false
+  if (gameOver = false){
+    setPlayer()
+  } else {
+    endGame()
+  }
+}
 
+endGame = () =>{
+  winningPLayer = currentPlayer
+  console.log(winningPLayer)
+}
 
 const setPlayer =() => {switch (isWhiteTurn) {
   case true:
@@ -168,6 +184,7 @@ const setPlayer =() => {switch (isWhiteTurn) {
       blackPiece.draggable = false;
     });
     playerDisplay.innerHTML ='white turn'
+    currentPlayer = 'white';
     break;
     
   case false:
@@ -178,6 +195,7 @@ const setPlayer =() => {switch (isWhiteTurn) {
       blackPiece.draggable = true;
     });
     playerDisplay.innerHTML ='black turn'
+    currentPlayer = 'black'
     break;
 }
 }
