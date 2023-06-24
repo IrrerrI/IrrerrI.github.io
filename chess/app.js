@@ -7,6 +7,7 @@ let draggedPiece
 let targetSquareID
 let targetSquare
 let isValidMove
+let rookMoves = []
 
 
 //////////////////////////////////////////////////pieces/////////////////////////////////
@@ -70,16 +71,22 @@ if(target.classList.contains('square')){
   targetSquareID = target.parentNode.getAttribute('square-id')
   targetSquare = target.parentNode
 }
+const originRow = Math.floor(originSquare / 8);
+const originColumn = originSquare % 8;
+const targetRow = Math.floor(square / 8);
+const targetColumn = square % 8;
 checkValid(targetSquareID, originSquare)
 if (validMove == true){
   commitMove(targetSquareID, originSquare)
 } 
+
 //console.log(validMove)
 }
 
-const checkValid = (targetSquareID) => {
+const checkValid = (targetSquareID, chosenPiece, originColumn, originRow, targetRow, targetColumn) => {
 
   checkPiece()
+
     switch (chosenPiece) {
       case 'pawn':
         if (chosenPiece.firstChild.classList.contains('whitepiece')) {
@@ -112,6 +119,16 @@ const checkValid = (targetSquareID) => {
         break;
     
       case 'rook':
+
+
+for (let square = 0; square < 64; square++) {
+
+  if (row === originRow || column === originColumnColumn) {
+    rookMoves.push(square);
+    console.log(rookMoves)
+  }
+}
+
         if (rookMoves.includes(targetSquareID)) {
           validMove = true;
         } else 
@@ -133,6 +150,7 @@ const checkValid = (targetSquareID) => {
         break;
     }
   } 
+  console.log(rookMoves)
 }
   /*if draggedPiece.classList.contains('pawn')&& draggedPiece.firstChild.classList.contains('whitepiece')) {
     if (pawnMovesWhite.includes(targetSquareID)) {
@@ -160,7 +178,7 @@ const checkValid = (targetSquareID) => {
   }*/
 
   checkPiece = () => {
-    const chosenPiece = draggedPiece.classList[0]
+    const chosenPiece = draggedPiece.classList[1]
     console.log(chosenPiece)
   }
 
