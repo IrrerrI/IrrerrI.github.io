@@ -71,10 +71,10 @@ if(target.classList.contains('square')){
   targetSquareID = target.parentNode.getAttribute('square-id')
   targetSquare = target.parentNode
 }
-const originRow = Math.floor(originSquare / 8);
+/*const originRow = Math.floor(originSquare / 8);
 const originColumn = originSquare % 8;
 const targetRow = Math.floor(square / 8);
-const targetColumn = square % 8;
+const targetColumn = square % 8;*/
 checkValid(targetSquareID, originSquare)
 if (validMove == true){
   commitMove(targetSquareID, originSquare)
@@ -83,9 +83,9 @@ if (validMove == true){
 //console.log(validMove)
 }
 
-const checkValid = (targetSquareID, chosenPiece, originColumn, originRow, targetRow, targetColumn) => {
+const checkValid = (targetSquareID) => {
 
-  checkPiece()
+ /* checkPiece()
 
     switch (chosenPiece) {
       case 'pawn':
@@ -150,9 +150,9 @@ for (let square = 0; square < 64; square++) {
         break;
     }
   } 
-  console.log(rookMoves)
+  console.log(rookMoves)*/
 }
-  /*if draggedPiece.classList.contains('pawn')&& draggedPiece.firstChild.classList.contains('whitepiece')) {
+  if (draggedPiece.classList.contains('pawn')&& draggedPiece.firstChild.classList.contains('whitepiece')) {
     if (pawnMovesWhite.includes(targetSquareID)) {
       validChoice = true;
     } else validMove = false
@@ -169,13 +169,12 @@ for (let square = 0; square < 64; square++) {
       validMove = true;
     }
   } else if (draggedPiece.classList.contains('rook')){
-    if (rookMoves.includes(targetSquareID)) {
-      validChoice = true;
+    if ((targetSquareID - originSquare)||(originSquare - targetSquare) % 8 === 0){
+      validMove = true
     }
     } else {
       validMove == false
     }
-  }*/
 
   checkPiece = () => {
     const chosenPiece = draggedPiece.classList[1]
