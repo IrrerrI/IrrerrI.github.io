@@ -8,7 +8,7 @@ let targetSquareID
 let targetSquare
 let isValidMove
 let rookMoves = []
-
+let chosenPiece
 
 //////////////////////////////////////////////////pieces/////////////////////////////////
 
@@ -83,9 +83,10 @@ if (validMove == true){
 //console.log(validMove)
 }
 
-const checkValid = (targetSquareID) => {
+const checkValid = (targetSquareID, draggedPiece, originSquare) => {
 
- /* checkPiece()
+ checkPiece()
+ 
 
     switch (chosenPiece) {
       case 'pawn':
@@ -105,6 +106,7 @@ const checkValid = (targetSquareID) => {
         break;
     
       case 'knight':
+        console.log('knight time')
         if (knightMoves.includes(targetSquareID)) {
           validMove = true;
         } else 
@@ -119,6 +121,7 @@ const checkValid = (targetSquareID) => {
         break;
     
       case 'rook':
+        console.log('rook time')
 
 
 for (let square = 0; square < 64; square++) {
@@ -136,6 +139,13 @@ for (let square = 0; square < 64; square++) {
         break;
     
       case 'queen':
+        for (let square = 0; square < 64; square++) {
+
+          if (row === originRow || column === originColumnColumn) {
+            queenMoves.push(square);
+            console.log(queenMoves)
+          }
+        }
         if (queenMoves.includes(targetSquareID)) {
           validMove = true;
         } else 
@@ -150,9 +160,9 @@ for (let square = 0; square < 64; square++) {
         break;
     }
   } 
-  console.log(rookMoves)*/
+  console.log(rookMoves)
 }
-  if (draggedPiece.classList.contains('pawn')&& draggedPiece.firstChild.classList.contains('whitepiece')) {
+/*  if (draggedPiece.classList.contains('pawn')&& draggedPiece.firstChild.classList.contains('whitepiece')) {
     if (pawnMovesWhite.includes(targetSquareID)) {
       validChoice = true;
     } else validMove = false
@@ -162,7 +172,8 @@ for (let square = 0; square < 64; square++) {
     } else validMove = false
   } 
   
-  else if (draggedPiece.classList.contains('knight')) {
+  else
+   if (draggedPiece.classList.contains('knight')) {
     if (knightMoves.includes(targetSquareID)) {
       validChoice = true;
     } else {
@@ -175,9 +186,10 @@ for (let square = 0; square < 64; square++) {
     } else {
       validMove == false
     }
+  }*/
 
   checkPiece = () => {
-    const chosenPiece = draggedPiece.classList[1]
+    chosenPiece = draggedPiece.classList[1]
     console.log(chosenPiece)
   }
 
