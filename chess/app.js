@@ -71,10 +71,8 @@ if(target.classList.contains('square')){
   targetSquareID = target.parentNode.getAttribute('square-id')
   targetSquare = target.parentNode
 }
-/*const originRow = Math.floor(originSquare / 8);
-const originColumn = originSquare % 8;
-const targetRow = Math.floor(square / 8);
-const targetColumn = square % 8;*/
+
+
 checkValid(targetSquareID, originSquare)
 if (validMove == true){
   commitMove(targetSquareID, originSquare)
@@ -83,10 +81,13 @@ if (validMove == true){
 //console.log(validMove)
 }
 
-const checkValid = (targetSquareID, draggedPiece, originSquare) => {
+const checkValid = (targetSquareID, draggedPiece, originSquare, square) => {
 
  checkPiece()
- 
+const originRow = Math.floor(originSquare / 8);
+const originColumn = originSquare % 8;
+const targetRow = Math.floor(square / 8);
+const targetColumn = square % 8;
 
     switch (chosenPiece) {
       case 'pawn':
@@ -125,8 +126,8 @@ const checkValid = (targetSquareID, draggedPiece, originSquare) => {
 
 
 for (let square = 0; square < 64; square++) {
-
-  if (row === originRow || column === originColumnColumn) {
+  console.log(square)
+  if (targetRow === originRow || targetColumn === originColumn) {
     rookMoves.push(square);
     console.log(rookMoves)
   }
@@ -271,3 +272,4 @@ whitePieces.forEach(whitePiece =>
 whitePiece.firstChild.classList.add('whitepiece'))
 
 setPlayer()
+
