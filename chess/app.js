@@ -106,7 +106,7 @@ const targetColumn = square % 8;
         }
         break;
     
-      case 'knight':
+  case 'knight':
         console.log('knight time')
         if (knightMoves.includes(targetSquareID)) {
           validMove = true;
@@ -121,26 +121,25 @@ const targetColumn = square % 8;
           validMove = false;
         break;
     
-      case 'rook':
+  case 'rook':
         console.log('rook time')
 
 
-for (let square = 0; square < 64; square++) {
-  console.log(targetRow)
-  if (targetRow === originRow || targetColumn === originColumn) {
-    rookMoves.push(square);
-  }
-} console.log(rookMoves)
+       for (let square = 0; square < 64; square++) {
+       console.log(targetRow)
+          if (targetRow === originRow || targetColumn === originColumn) {
+          rookMoves.push(square);
+          }
+          } console.log(rookMoves)
 
-        if (rookMoves.includes(targetSquareID)) {
+          if (rookMoves.includes(targetSquareID)) {
           validMove = true;
-        } else 
+          } else 
           validMove = false;
         break;
     
-      case 'queen':
+  case 'queen':
         for (let square = 0; square < 64; square++) {
-
           if (row === originRow || column === originColumnColumn) {
             queenMoves.push(square);
             console.log(queenMoves)
@@ -152,7 +151,7 @@ for (let square = 0; square < 64; square++) {
           validMove = false;
         break;
     
-      case 'king':
+  case 'king':
         if (kingMoves.includes(targetSquareID)) {
           validMove = true;
         } else {
