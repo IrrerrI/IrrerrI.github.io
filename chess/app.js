@@ -86,8 +86,10 @@ const checkValid = (targetSquareID, draggedPiece, originSquare, square) => {
  checkPiece()
 const originRow = Math.floor(originSquare / 8);
 const originColumn = originSquare % 8;
-const targetRow = Math.floor(square / 8);
-const targetColumn = square % 8;
+const row = Math.floor(square / 8);
+const column = square % 8;
+const rowDifference = originRow - row || row - originRow
+const columnDifference = originColumn - column || column - originColumn 
 
     switch (chosenPiece) {
       case 'pawn':
@@ -114,7 +116,13 @@ const targetColumn = square % 8;
           validMove = false;
         break;
     
-      case 'bishop':
+  case 'bishop':
+      for (let square = 0; square < 64; square++) {
+          if (rowDifference == columnDifference) {
+            queenMoves.push(square);
+            console.log(queenMoves)
+          }
+        }
         if (bishopMoves.includes(targetSquareID)) {
           validMove = true;
         } else 
@@ -140,7 +148,7 @@ const targetColumn = square % 8;
     
   case 'queen':
         for (let square = 0; square < 64; square++) {
-          if (row === originRow || column === originColumnColumn) {
+          if (row === originRow || column === originColumn) {
             queenMoves.push(square);
             console.log(queenMoves)
           }
