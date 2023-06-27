@@ -119,8 +119,8 @@ const columnDifference = originColumn - column || column - originColumn
   case 'bishop':
       for (let square = 0; square < 64; square++) {
           if (rowDifference == columnDifference) {
-            queenMoves.push(square);
-            console.log(queenMoves)
+            bishopMoves.push(square);
+            console.log(bishopMoves)
           }
         }
         if (bishopMoves.includes(targetSquareID)) {
