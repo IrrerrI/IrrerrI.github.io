@@ -135,7 +135,7 @@ const columnDifference = originColumn - column || column - originColumn
 
        for (let square = 0; square < 64; square++) {
        console.log(targetRow)
-          if (targetRow === originRow || targetColumn === originColumn) {
+          if (row === originRow || column === originColumn) {
           rookMoves.push(square);
           }
           } console.log(rookMoves)
