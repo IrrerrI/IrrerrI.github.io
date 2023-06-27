@@ -148,7 +148,7 @@ const columnDifference = originColumn - column || column - originColumn
     
   case 'queen':
         for (let square = 0; square < 64; square++) {
-          if (row === originRow || column === originColumn) {
+          if ((row === originRow) || (column === originColumn) || (rowDifference == columnDifference)) {
             queenMoves.push(square);
             console.log(queenMoves)
           }
