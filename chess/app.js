@@ -126,12 +126,11 @@ const targetColumn = square % 8;
 
 
 for (let square = 0; square < 64; square++) {
-  console.log(square)
+  console.log(targetRow)
   if (targetRow === originRow || targetColumn === originColumn) {
     rookMoves.push(square);
-    console.log(rookMoves)
   }
-}
+} console.log(rookMoves)
 
         if (rookMoves.includes(targetSquareID)) {
           validMove = true;
