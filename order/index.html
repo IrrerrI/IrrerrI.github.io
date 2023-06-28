@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yellow Pages Search Bar</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="searchBar-container">
+      <div class="search-bar">
+        <form action="https://www.yellowpages.com/search" method="GET">
+          <input type="hidden" name="utm_source" value="www.kenyago.org" />
+          <input
+            type="text"
+            name="query"
+            placeholder="Search on Yellow Pages"
+          />
+          <input
+            type="submit"
+            value="Search"
+            style="background-color: #ffc107"
+          />
+        </form>
+      </div>
+      <div class="search-bar">
+        <form class="form-2" action="https://www.yelp.com/search" method="GET">
+          <input type="hidden" name="utm_source" value="www.kenyago.org" />
+          <input
+            type="submit"
+            value="Search"
+            style="background-color: #ff0000"
+          />
+          <input type="text" name="find_desc" placeholder="Search on Yelp" />
+        </form>
+      </div>
+    </div>
+
+    <h1>Create Your Bucket List</h1>
+    <h2 class="title">BUCKET LIST</h2>
+    <center>
+      <button class="btn-print" onclick="printPage()">Download</button>
+    </center>
+    <div class="bucket-list"></div>
+    <div class="container">
+      <div class="activity-section">
+        <div class="activity-section-inner">
+          <h3 style="text-align: left">Outdoor</h3>
+          <div class="list-activity-selector">
+            <div class="social-list">
+              <div class="list-container">
+                <h4 style="text-align: left">Social</h4>
+                <ul class="activity-list">
+                  <li>
+                    ATVing
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Parasailing
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Snowboarding
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Rock Climbing
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Winery
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Tennis
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Camping
+                    <button class="btn-add">Addt</button>
+                  </li>
+                  <li>
+                    Helicopter Ride
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Surfing
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Rafting
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Fishing
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Snowmobiling
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Dog Sledding
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Hunting
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Archery
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Baseball Game
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Soccer Game
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Hot Springs
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Geocaching
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Paintballing
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Paint and Sip
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Go-Kart Racing
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Water Skiing
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Skiing
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Paddleboarding
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Hang Gliding
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Paragliding
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Sailing
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Scuba Diving
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Hot-air Balloon
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Camping
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Horseback Riding
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Zipline
+                    <button class="btn-add">Add</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="solo-list">
+              <h4 style="text-align: left">Solo</h4>
+              <ul class="activity-list">
+                <li>
+                  Drone Piloting
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Hammocking
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Hiking
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Yoga
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Biking
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Trail Running
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Trekking
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Kite Surfing
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Skateboarding
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Rollerskating
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Painting
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Picnic
+                  <button class="btn-add">Add</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="activity-section-inner">
+          <h3 style="text-align: left">Indoors</h3>
+          <div class="list-activity-selector">
+            <div class="social-list">
+              <div class="list-container">
+                <h4 style="text-align: left">Social</h4>
+                <ul class="activity-list">
+                  <li>
+                    Opera
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Theatre
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Circus
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Art Exhibit
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Museum
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Arcade
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    NBA Game
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Rollerskating
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Museum
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Concert
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Paint and Sip
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Escape Room
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Hockey Game
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Trampoline Park
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Bowling
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Karaoke
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Laser Tag
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Billiards
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Virtual Reality Experience
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Cooking Class
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Mixology Class
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Winetasting
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Beer Tasting
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Murder Mystery Dinner
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Comedy Club
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Live Music
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Opera
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Theatre
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Ballet
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Circus
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Art Exhibit
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Museum
+                    <button class="btn-add">Add</button>
+                  </li>
+                  <li>
+                    Arcade
+                    <button class="btn-add">Add</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="solo-list">
+              <h4 style="text-align: left">Solo</h4>
+              <ul class="activity-list">
+                <li>
+                  Candle Making Class
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Live Poetry and Music
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Yoga
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Dance Class
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Spa
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Knitting
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Woodworking
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Glassmaking
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Sauna
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Music Production
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Learn an Instrument
+                  <button class="btn-add">Add</button>
+                </li>
+                <li>
+                  Learn a Language
+                  <button class="btn-add">Add</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        // Initialize an empty array to store the selected activities
+        const selectedActivities = [];
+
+        // Function to add an activity to the bucket list
+        function addToBucketList(activity) {
+          selectedActivities.push(activity);
+          renderBucketList();
+        }
+
+        // Function to render the bucket list preview
+        function renderBucketList() {
+          const bucketList = document.querySelector(".bucket-list");
+          bucketList.innerHTML = "";
+
+          selectedActivities.forEach((activity) => {
+            const li = document.createElement("li");
+            li.textContent = activity;
+            bucketList.appendChild(li);
+          });
+        }
+
+        // Event listener for the "Add to Bucket List" buttons
+        const addButtons = document.querySelectorAll(".btn-add");
+        addButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const activity = button.parentNode.firstChild.textContent.trim();
+            addToBucketList(activity);
+          });
+        });
+
+        // Function to set the text content of the print button
+        function setPrintButtonText() {
+          const printButton = document.querySelector(".btn-print");
+          printButton.textContent = "Download";
+        }
+
+        // Function to print the page
+        function printPage() {
+          setPrintButtonText();
+          window.print();
+        }
+      </script>
+    </div>
+  </body>
+</html>
