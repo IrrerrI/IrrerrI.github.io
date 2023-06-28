@@ -8,6 +8,7 @@ let targetSquareID
 let targetSquare
 let isValidMove
 let rookMoves = []
+let queenMoves = []
 let chosenPiece
 
 //////////////////////////////////////////////////pieces/////////////////////////////////
@@ -81,18 +82,19 @@ if (validMove == true){
 //console.log(validMove)
 }
 
-const checkValid = (targetSquareID, draggedPiece, originSquare, square) => {
+const checkValid = (targetSquareID, originSquare,) => {
 
  checkPiece()
-const originRow = Math.floor(originSquare / 8);
-const originColumn = originSquare % 8;
-const row = Math.floor(square / 8);
-const column = square % 8;
-const rowDifference = originRow - row || row - originRow
-const columnDifference = originColumn - column || column - originColumn 
+const originRow = Math.floor(originSquare / 8) + 1;
+const originColumn = (originSquare % 8 === 0) + 1;
+const row = Math.floor(piecesOrigin.length / 8);
+const column = piecesOrigin.length % 8 === 0;
+const rowDifference = originRow - row
+const columnDifference = originColumn - column 
+console.log(column)
 
-    switch (chosenPiece) {
-      case 'pawn':
+switch (chosenPiece) {
+  case 'pawn':
         if (chosenPiece.firstChild.classList.contains('whitepiece')) {
           if (pawnMovesWhite.includes(targetSquareID)) {
             validMove = true;
@@ -130,11 +132,9 @@ const columnDifference = originColumn - column || column - originColumn
         break;
     
   case 'rook':
-        console.log('rook time')
 
 
        for (let square = 0; square < 64; square++) {
-       console.log(targetRow)
           if (row === originRow || column === originColumn) {
           rookMoves.push(square);
           }
@@ -150,7 +150,7 @@ const columnDifference = originColumn - column || column - originColumn
         for (let square = 0; square < 64; square++) {
           if ((row === originRow) || (column === originColumn) || (rowDifference == columnDifference)) {
             queenMoves.push(square);
-            console.log(queenMoves)
+            console.log('hehe')
           }
         }
         if (queenMoves.includes(targetSquareID)) {
@@ -167,7 +167,6 @@ const columnDifference = originColumn - column || column - originColumn
         break;
     }
   } 
-  console.log(rookMoves)
 }
 /*  if (draggedPiece.classList.contains('pawn')&& draggedPiece.firstChild.classList.contains('whitepiece')) {
     if (pawnMovesWhite.includes(targetSquareID)) {
@@ -258,6 +257,7 @@ createGame();
 
 const chessPieces = document.querySelectorAll('.piece')
 const squares = document.querySelectorAll('.square')
+
 chessPieces.forEach(chessPiece =>{
     chessPiece.addEventListener('dragstart', pick)
     chessPiece.addEventListener('drop', drop)
