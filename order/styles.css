@@ -1,8 +1,22 @@
-.container{
+.activity-section{
     display: flex;
-    flex-direction: row;
+}
+
+.list-activity-selector{
+    display: flex;
+}
+
+.container{
     width: 100%;
-    background-color: palegoldenrod;
-    margin: NONE;
-    padding: none;
+    display: grid;
+    justify-content: center;
+}
+
+.list-activity-selector li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-activity-selector button{
+    height: 1rem;
 }
