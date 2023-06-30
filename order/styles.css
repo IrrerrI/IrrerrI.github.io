@@ -20,3 +20,10 @@
 .list-activity-selector button{
     height: 1rem;
 }
+
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 20% 0;
+}

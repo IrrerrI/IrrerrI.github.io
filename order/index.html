@@ -9,39 +9,45 @@
   </head>
 
   <body>
-    <div class="searchBar-container">
-      <div class="search-bar">
-        <form action="https://www.yellowpages.com/search" method="GET">
-          <input type="hidden" name="utm_source" value="www.kenyago.org" />
-          <input
-            type="text"
-            name="query"
-            placeholder="Search on Yellow Pages"
-          />
-          <input
-            type="submit"
-            value="Search"
-            style="background-color: #ffc107"
-          />
-        </form>
+    <div class="header">
+      <div class="searchBar-container">
+        <div class="search-bar">
+          <form action="https://www.yellowpages.com/search" method="GET">
+            <input type="hidden" name="utm_source" value="www.kenyago.org" />
+            <input
+              type="text"
+              name="query"
+              placeholder="Search on Yellow Pages"
+            />
+            <input
+              type="submit"
+              value="Search"
+              style="background-color: #ffc107"
+            />
+          </form>
+        </div>
+        <div class="search-bar">
+          <form
+            class="form-2"
+            action="https://www.yelp.com/search"
+            method="GET"
+          >
+            <input type="hidden" name="utm_source" value="www.kenyago.org" />
+            <input
+              type="submit"
+              value="Search"
+              style="background-color: #ff0000"
+            />
+            <input type="text" name="find_desc" placeholder="Search on Yelp" />
+          </form>
+        </div>
       </div>
-      <div class="search-bar">
-        <form class="form-2" action="https://www.yelp.com/search" method="GET">
-          <input type="hidden" name="utm_source" value="www.kenyago.org" />
-          <input
-            type="submit"
-            value="Search"
-            style="background-color: #ff0000"
-          />
-          <input type="text" name="find_desc" placeholder="Search on Yelp" />
-        </form>
-      </div>
-    </div>
 
-    <h1>Create Your Bucket List</h1>
-    <h2 class="title">BUCKET LIST</h2>
-    <button class="btn-print" onclick="printPage()">Download</button>
-    <div class="bucket-list"></div>
+      <h1>Create Your Bucket List</h1>
+      <h2 class="title">BUCKET LIST</h2>
+      <button class="btn-print" onclick="printPage()">Download</button>
+      <div class="bucket-list"></div>
+    </div>
     <div class="container">
       <div class="activity-section">
         <div class="activity-section-inner">
