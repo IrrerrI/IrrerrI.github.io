@@ -1,3 +1,8 @@
+body{
+    display: grid;
+}
+
+
 .activity-section{
     display: flex;
 }
@@ -27,3 +32,16 @@
     justify-content: center;
     margin: 0 20% 0;
 }
+.your-list{
+    position: fixed;
+    top: 30dvh;
+    transition: all 500ms;
+    display: flex;
+    flex-direction: column;
+    gap: 2dvh;
+    background-color: hsl(0, 0%, 87%);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    z-index: 15;
+    font-family: sans-serif;
+  }
