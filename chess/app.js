@@ -55,6 +55,7 @@ const createGame =() => {
 const pick = (e) => {
   draggedPiece = e.target;
   originSquare = e.target.parentNode.getAttribute('square-id')
+  console.log(column)
 
 };
 
@@ -91,7 +92,7 @@ const row = Math.floor(piecesOrigin.length / 8);
 const column = piecesOrigin.length % 8 === 0;
 const rowDifference = originRow - row
 const columnDifference = originColumn - column 
-console.log(column)
+
 
 switch (chosenPiece) {
   case 'pawn':
