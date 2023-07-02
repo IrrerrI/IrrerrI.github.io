@@ -106,4 +106,14 @@ body {
     .searchBar-container {
       flex-direction: column;
     }
+    .activity-section{
+        padding-left: 0;
+    }
+    .activity-list{
+        padding-left: 1vw;
+    }
+    .first-list{
+        padding-left: 0;
+
+    }
   }
