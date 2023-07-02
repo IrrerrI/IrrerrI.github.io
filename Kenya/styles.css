@@ -112,8 +112,12 @@ body {
     .activity-list{
         padding-left: 1vw;
     }
-    .first-list{
+    ul{
         padding-left: 0;
+    }
 
+    .container{
+        width: fit-content;
+        margin-left: 10%;
     }
   }
