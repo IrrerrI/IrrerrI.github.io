@@ -1,10 +1,6 @@
 const submitButton = document.querySelector('.submit')
 const bdayMessage = document.querySelector(".message")
 const container = document.querySelector(".container")
-    const randomIndex = Math.floor(Math.random() * messages.length);
-    const randomMessage = messages[randomIndex];
-    bdayMessage.innerHTML = randomMessage
-}
 const displayRandomMessage = () => {
     const messages = [
         'autistic bitch',
@@ -42,15 +38,11 @@ const displayRandomMessage = () => {
 }
 function handleSubmit(event) {
     event.preventDefault();
-    console.log('ok')
     const nameInput = document.querySelector('.name');
     const name = nameInput.value.toLowerCase();
-    const vinnieNames = ['vinnie', 'roman','kuni','ronnie','robbie']
     const validNames = ['ena', 'menahil', 'mena'];
     if (validNames.includes(name)) {
         displayRandomMessage();
-    } else if(vinnieNames.includes(name)){
-        displayVinnieMessage();
     }
 }
 
