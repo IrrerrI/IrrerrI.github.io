@@ -26,11 +26,6 @@ img{
     width: 200px;
 }
 
-.white{
-    background-color: white;
-    transition: all 1s;
-}
-
 .message{
     height: 20px;
     transition: all 1s;
