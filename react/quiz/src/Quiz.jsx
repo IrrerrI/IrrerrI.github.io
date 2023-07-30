@@ -6,7 +6,7 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [score, setScore] = useState(0)
   const nextQuestion = currentQuestion + 1;
-  const handleOptionClick = (selectedOption) => {
+  const handleClick = (selectedOption) => {
     if (selectedOption === quizData[currentQuestion].correctAnswer) {
       setScore(score + 1);
     } else {
@@ -52,4 +52,4 @@ const Quiz = () => {
   );
 };
 
-export default App
+export default Quiz
