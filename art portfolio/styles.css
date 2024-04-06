@@ -1,0 +1,28 @@
+
+body{
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    margin: 0p;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(6, 100px);
+    gap: 0.5rem;
+
+
+    img{
+        grid-column: span 2;
+        aspect-ratio: 1;
+        background-color: yellow;
+        max-width: 100%;
+        object-fit: cover;
+
+        &:nth-of-type(4){
+            grid-column: 2/ span 2;
+        }
+    }
+
+
+}
