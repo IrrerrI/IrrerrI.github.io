@@ -213,6 +213,7 @@ switch (chosenPiece) {
 const checkState = () =>{
   if (validMovesKing = null){
     gameOver = true
+
   } else gameOver = false
   if (gameOver = false){
     setPlayer()
@@ -222,8 +223,13 @@ const checkState = () =>{
 }
 
 endGame = () =>{
-  winningPLayer = currentPlayer
-  console.log(winningPLayer)
+  if (checkForCheck = true)
+  {
+    winningPLayer = currentPlayer
+    console.log(winningPLayer)
+  } else {
+    console.log("it's a stalemate!")
+  }
 }
 
 const setPlayer =() => {switch (isWhiteTurn) {
